@@ -1,42 +1,4 @@
-# import os
-# from fastapi import FastAPI, File, UploadFile
-# from fastapi.responses import JSONResponse
-# from fastapi.middleware.cors import CORSMiddleware
-# from .crud import create_image_metadata
 
-# # Instantiate the FastAPI app
-# app = FastAPI()
-
-# # CORS setup for frontend access
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["http://localhost:5173"],  # Adjust as needed
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-
-# # Create 'static' directory if it doesn't exist
-# if not os.path.exists("static"):
-#     os.makedirs("static")
-
-# # Endpoint to upload an image
-# @app.post("/upload-image")
-# async def upload_image(image: UploadFile = File(...)):
-#     try:
-#         # Save the image file to disk in the 'static/' directory
-#         file_location = f"static/{image.filename}"
-#         with open(file_location, "wb") as f:
-#             f.write(await image.read())
-        
-#         # Store image metadata in MongoDB (only passing the original image path)
-#         image_metadata_id = create_image_metadata(file_location)
-        
-#         return JSONResponse(status_code=200, content={"message": "Image uploaded successfully", "image_id": str(image_metadata_id)})
-
-#     except Exception as e:
-#         print(e)  # Print the exception to debug
-#         return JSONResponse(status_code=500, content={"message": f"Failed to upload image: {str(e)}"})
 
 
 
