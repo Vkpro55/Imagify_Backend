@@ -65,6 +65,8 @@ async def upload_mask(mask: UploadFile = File(...)):
         return JSONResponse(status_code=500, content={"message": f"Failed to upload mask: {str(e)}"})
 
 
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=int(port))
+    # Ensure that you're binding to the correct host and port
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))  # Default to 8000 if PORT is not set
