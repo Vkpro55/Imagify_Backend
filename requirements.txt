@@ -1,5 +1,4 @@
 uvicorn
-bson
 pymongo
 python-dotenv
 motor

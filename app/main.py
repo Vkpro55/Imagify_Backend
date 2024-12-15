@@ -12,6 +12,7 @@ from .crud import create_image_metadata
 # Instantiate the FastAPI app
 app = FastAPI()
 
+
 # CORS setup for frontend access
 app.add_middleware(
     CORSMiddleware,
@@ -20,6 +21,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+port = os.getenv("PORT", 8000)
 
 # Create 'static' directory if it doesn't exist
 if not os.path.exists("static"):
@@ -61,3 +64,7 @@ async def upload_mask(mask: UploadFile = File(...)):
         print(e)  # Print the exception to debug
         return JSONResponse(status_code=500, content={"message": f"Failed to upload mask: {str(e)}"})
 
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=int(port))
